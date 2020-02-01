@@ -25,67 +25,67 @@ const GridItem = styled.div`
 `;
 
 class App extends React.Component {
-  
   // Initiate state
-  this.state = {
-    rows: 10,
-    cols: 10,
-    grid: [],
-  };
-const grid = [];
-  for (let row = 0; row < this.state.rows; row++) {
-    for (let col = 0; col < this.state.cols; col++) {
-      grid.push({
-        row,
-        col,
-      })
+  constructor(props) {
+    super(props);
+    this.state = {
+      rows: 10,
+      cols: 10,
+      grid: []
+    };
+    const grid = [];
+    for (let row = 0; row < this.state.rows; row++) {
+      for (let col = 0; col < this.state.cols; col++) {
+        grid.push({
+          row,
+          col
+        });
+      }
     }
+    this.setState({ grid: grid });
   }
-  this.setState({ grid: grid })
-render () {
-    const gridItems = this.state.grid.map((grid) => {
-      return <div 
-        key={grid.row.toString() + '-' + grid.col.toString()} 
-        className="grid-item" ></div>
-    })
+
+  render() {
+    const gridItems = this.state.grid.map(grid => {
+      return <GridItem key={grid.row.toString() + '-' + grid.col.toString()} />;
+    });
     return (
-      <div className="snake-container">
-        <div className="grid">{gridItems}</div>
-      </div>
-    )
+      <SnakeContainer>
+        <Grid>{gridItems}</Grid>
+      </SnakeContainer>
+    );
   }
 }
 
 // class App extends React.Component {
-//   // Initiate state
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       rows: 10,
-//       cols: 10,
-//       grid: []
-//     };
-//     const grid = [];
-//     for (let row = 0; row < this.state.rows; row++) {
-//       for (let col = 0; col < this.state.cols; col++) {
-//         grid.push({
-//           row,
-//           col
-//         });
-//       }
-//     }
-//     this.setState({ grid: grid });
-//   }
 
-//   render() {
-//     const gridItems = this.state.grid.map(grid => {
-//       return <GridItem key={grid.row.toString() + '-' + grid.col.toString()} />;
-//     });
+//   // Initiate state
+//   this.state = {
+//     rows: 10,
+//     cols: 10,
+//     grid: [],
+//   };
+// const grid = [];
+//   for (let row = 0; row < this.state.rows; row++) {
+//     for (let col = 0; col < this.state.cols; col++) {
+//       grid.push({
+//         row,
+//         col,
+//       })
+//     }
+//   }
+//   this.setState({ grid: grid })
+// render () {
+//     const gridItems = this.state.grid.map((grid) => {
+//       return <div
+//         key={grid.row.toString() + '-' + grid.col.toString()}
+//         className="grid-item" ></div>
+//     })
 //     return (
-//       <SnakeContainer>
-//         <Grid>{gridItems}</Grid>
-//       </SnakeContainer>
-//     );
+//       <div className="snake-container">
+//         <div className="grid">{gridItems}</div>
+//       </div>
+//     )
 //   }
 // }
 
